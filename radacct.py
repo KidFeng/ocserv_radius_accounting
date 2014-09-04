@@ -28,5 +28,7 @@ else:
     req["Acct-Output-Octets"] = long(os.getenv("STATS_BYTES_OUT"))
     req["Acct-Session-Time"] = long(os.getenv("STATS_DURATION"))
     req["Acct-Terminate-Cause"] = "User-Request"
-
-srv.SendPacket(req)
+try:
+    srv.SendPacket(req)
+except Exception as e:
+    print e
